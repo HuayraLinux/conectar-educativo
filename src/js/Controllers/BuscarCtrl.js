@@ -58,7 +58,9 @@ app.controller('BuscarController', function($scope, $modal, $http, ApiFactory, D
     $scope.data.infografias = [];
     $scope.data.buscando = true;
 
-    function success(req) {
+    function success(req, error) {
+      console.log("Success return", {successList: req, errorList: error});
+
       for(var i in req){
         var data = req[i].data;
         $scope.data[data.entity + 's'] = data.result.data;

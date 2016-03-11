@@ -29,11 +29,21 @@ app.factory("ApiFactory", function($http, $q) {
 
   api.buscar = function(data, success_callback, error_callback){
     var result = [];
-    var error = [];
-    function push(r) { if(r.status == 200) result.push(r); }
-    function error(e) { error.push(e); }
+    var errors = [];
 
-    console.log(api.uri.recursos.buscarJuegos + JSON.stringify(data));
+    function push(r) {
+      if (r.status == 200) {
+        result.push(r);
+      } else {
+        errors.push(r);
+      }
+    }
+
+    function error(e) {
+      error.push(e);
+    }
+
+    //console.log(api.uri.recursos.buscarJuegos + JSON.stringify(data));
 
     var juegos = $http.get(api.uri.recursos.buscarJuegos + JSON.stringify(data)),
         videos = $http.get(api.uri.recursos.buscarVideos + JSON.stringify(data)),
@@ -48,7 +58,7 @@ app.factory("ApiFactory", function($http, $q) {
       secuencias.then(push).catch(error),
       infografias.then(push).catch(error)
     ]).then(function() {
-      success_callback(result);
+      success_callback(result, errors);
     });
   };
 
@@ -83,7 +93,7 @@ app.factory("ApiFactory", function($http, $q) {
   };
 
   api.obtener_detalle = function(recurso, success_callback, error_callback) {
-    
+
     switch (recurso.entity) {
       case "juego":
           api.obtener_detalle_juego(recurso.id, success_callback, error_callback);
