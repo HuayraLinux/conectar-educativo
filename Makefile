@@ -50,7 +50,7 @@ version:
 
 ver_sync:
 	git commit -am 'release ${VERSION}'
-	git tag '${VERSION}'
+	git tag ${VERSION}
 	git push
 	git push --all
 	git push --tags
