@@ -1,4 +1,5 @@
 VERSION="0.4.1"
+NOMBRE="conectar-educativo"
 
 N=[0m
 V=[01;32m
