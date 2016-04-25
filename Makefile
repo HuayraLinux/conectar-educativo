@@ -67,6 +67,7 @@ version_minor:
 ver_sync: subir_version
 
 subir_version:
+	echo "" > README.md
 	git commit -am 'release ${VERSION}'
 	git tag '${VERSION}'
 	git push
