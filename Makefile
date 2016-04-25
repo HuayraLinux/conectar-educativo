@@ -4,7 +4,8 @@ N=[0m
 V=[01;32m
 
 all:
-	@echo "Comandos disponibles"
+	@echo ""
+	@echo "Comandos disponibles ${V}${VERSION}${N}"
 	@echo ""
 	@echo "  $(V)deps$(N)         Instala las dependencias necesarias."
 	@echo "  $(V)distwin$(N)      Genera las versiones para windows."
