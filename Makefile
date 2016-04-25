@@ -1,61 +1,72 @@
-VERSION="0.4.1"
+VERSION=0.4.1
 NOMBRE="conectar-educativo"
 
 N=[0m
-V=[01;32m
+G=[01;32m
+Y=[01;33m
+B=[01;34m
 
-all:
+comandos:
 	@echo ""
-	@echo "Comandos disponibles ${V}${VERSION}${N}"
+	@echo "${B}Comandos disponibles para ${G}${NOMBRE} - ${VERSION}${N}"
 	@echo ""
-	@echo "  $(V)deps$(N)         Instala las dependencias necesarias."
-	@echo "  $(V)distwin$(N)      Genera las versiones para windows."
-	@echo "  $(V)deps$(N)         Instala las dependencias necesarias."
-	@echo "  $(V)dist$(N)         Genera las versiones compiladas de la aplicación."
+	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
-	@echo "  $(V)version$(N)     Genera la informacion de versión actualizada."
-	@echo "  $(V)ver_sync$(N)    Sube la nueva version al servidor."
+	@echo "    ${G}iniciar${N}         Instala dependencias."
+	@echo "    ${G}compilar${N}        Genera los archivos compilados."
+	@echo "    ${G}compilar_live${N}   Compila de forma contínua."
 	@echo ""
-	@echo "  $(V)test_linux$(N)   Prueba la aplicacion usando nodewebkit en linux."
-	@echo "  $(V)test_mac$(N)     Prueba la aplicacion usando nodewebkit en mac osx."
-	@echo "  $(V)run_tests$(N)    Ejecuta todos los tests de la aplicación."
+	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
+	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
+	@echo ""
+	@echo "  ${Y}Para distribuir${N}"
+	@echo ""
+	@echo "    ${G}version${N}         Genera una nueva versión."
+	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
+	@echo "    ${G}log${N}             Muestra los cambios desde el ultimo tag."
 	@echo ""
 
-deps:
-	npm install
 
-test_linux:
-	nw src
+iniciar:
+	npm install --no-option
+	./node_modules/bower/bin/bower install
 
-distwin:
-	rm -r -f distwin
-	sh extras/distwin.sh
-	makensis distwin/instalador.nsi
-	mv distwin/conectar-educativo_0.4.1.exe dist/
-	@echo "Build completo: el archivo se encuentra en dist"
-#	open dist
+dist: compilar
 
+ejecutar_linux: 
+	nw dist
 
-test_mac:
-	@echo "Cuidado - se está usando la version de nodewebkit del sistema."
-	open -a /Applications/node-webkit.app --args /Users/hugoruscitti/proyectos/conectar-educativo/src
+ejecutar_mac:
+	/Applications/nwjs.app/Contents/MacOS/nwjs dist
 
-run_tests:
-	./node_modules/karma/bin/karma start
+test_mac: ejecutar_mac
+
+build: compilar
+
+compilar:
+	./node_modules/ember-cli/bin/ember build
+
+compilar_live:
+	./node_modules/ember-cli/bin/ember build --watch
 
 version:
-	@bumpversion --current-version ${VERSION} patch extras/instalador.nsi src/package.json Makefile src/templates/modal_about.html --list
-	@echo "Ahora es recomendable escribir el comando que genera los tags y sube todo a github:"
+	# patch || minor
+	@bumpversion patch --current-version ${VERSION} public/package.json Makefile --list
+	make build
+	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
-	@echo "make ver_sync"
-	@echo ""
+	@echo "make subir_version"
 
-ver_sync:
+ver_sync: subir_version
+
+subir_version:
 	git commit -am 'release ${VERSION}'
-	git tag ${VERSION}
+	git tag '${VERSION}'
 	git push
 	git push --all
 	git push --tags
 
+log:
+	git log ${VERSION}...HEAD --graph --oneline --decorate
 
-.PHONY: test dist distwin
+.PHONY: dist
