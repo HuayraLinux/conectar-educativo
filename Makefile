@@ -1,4 +1,4 @@
-VERSION=0.4.1
+VERSION=0.4.2
 NOMBRE="conectar-educativo"
 
 N=[0m
