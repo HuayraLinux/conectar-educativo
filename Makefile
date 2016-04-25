@@ -49,9 +49,16 @@ compilar:
 compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
 
-version:
+version_patch:
 	# patch || minor
 	@bumpversion patch --current-version ${VERSION} public/package.json Makefile --list
+	make build
+	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
+	@echo ""
+	@echo "make subir_version"
+
+version_minor:
+	@bumpversion minor --current-version ${VERSION} public/package.json Makefile --list
 	make build
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
