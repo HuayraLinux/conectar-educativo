@@ -1,53 +1,38 @@
-# Conectar-educativo
+Conectar Educativo
+==================
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Aplicación de escritorio pensada para realizar búsquedas y consumir offline
+los recursos del portal educ.ar, basada en el stack de
+tecnologías: node-webkit, nedb, express, rest y angular.js
 
-## Prerequisites
 
-You will need the following things properly installed on your computer.
+![](preview/app.png)
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+```
+  cd conectar-educativo
+  npm install
+```
 
-## Installation
+También es importante tener instalado el comando `ffmpegthumbnailer`, y
+`node-webkit` (nwjs)
 
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+<a href="https://github.com/rogerwang/node-webkit#downloads" target="_blank">Descarga</a> el binario de node-webkit para tu plataforma y usalo para ejecutar la aplicación.
 
-## Running / Development
+```
+  nw src
+```
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+## Tecnologías utilizadas
 
-### Code Generators
+* nodewebkit
+* angularjs
+* nedb
 
-Make use of the many generators for code, try `ember help generate` for more details
+# Mas información
 
-### Running Tests
+Recomendamos estos links para conocer mas sobre las tecnologías que
+estamos utilizando:
 
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://www.ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+- https://github.com/rogerwang/node-webkit
+- https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps
+- https://github.com/buberdds/node-webkit-nedb-rest-angular
