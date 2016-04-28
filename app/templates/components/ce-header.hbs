@@ -1,52 +1,22 @@
 <nav navbar class="navbar navbar-default navbarn navbar-static-top main">
 
-<div class="container">
+  <div class="container">
 
-  <div id="loaderDiv" loader>
-      <img src="./img/loader.gif" class="ajax-loader"/>
-  </div>
+    <div class="navbar-header">
+      {{#link-to "index" class="logo_wrapper"}}<img class="logo-img" src="img/logo.png" alt="Logo de educ.ar">{{/link-to}}
+    </div>
 
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <a href="#home" class="logo_wrapper"><img class="logo-img" src="img/logo.png" alt="Logo de educ.ar"></a>
-  </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <boton-about></boton-about>
+      <ul class="nav navbar-nav choose_page navbar-right">
+          {{#link-to "index" tagName="li" class="itemMenu"}}<a>Inicio</a>{{/link-to}}
+          {{#link-to "buscar.index" tagName="li" class="itemMenu"}}<a>Buscar</a>{{/link-to}}
+          {{#link-to "descargas" tagName="li" class="itemMenu"}}<a>Descargas</a>{{/link-to}}
+          {{#link-to "misrecursos" tagName="li" class="itemMenu"}}<a>Mis Recursos</a>{{/link-to}}
+      </ul>
 
-    <indicador-red></indicador-red>
-
-    <ul ng-controller='NavController' class="nav navbar-nav choose_page navbar-right">
-
-            <li class="descargas" ng-class="getClass('/descargas')" >
-              <span class="indicador-descargas" ng-show='data.cantidad_descargas_en_curso > 0'>{{data.cantidad_descargas_en_curso}}</span>
-              <a href="#descargas">Descargas</a>
-            </li>
-
-            <li class="misrecursos" ng-class="getClass('/misrecursos')" >
-              <a href="#misrecursos">Mis Recursos</a>
-            </li>
-
-            <li class="buscar" ng-class="getClass('/buscar')" ng-hide="nav.status=='offline'">
-              <a href="#buscar">Buscar</a>
-            </li>
-
-            <!--
-            <li class="categorias" ng-class="getClass('/categorias')" ng-hide="nav.status=='offline'">
-              <a href="#categorias">Categorias</a>
-            </li>
-            -->
-
-            <!--
-
-            <li class="perfil" ng-class="getClass('/perfil')"><a href="#perfil">Perfil</a></li>
-          -->
-
-    </ul>
-
+    </div>
 
   </div>
-</div>
+
 </nav>
-{{yield}}

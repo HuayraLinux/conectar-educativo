@@ -9,6 +9,19 @@
 
     {{content-for "head"}}
 
+    <script>
+      window.requireNode = require;
+      var fs = requireNode('fs');
+
+      fs.watchFile('./index.html', function() {
+        console.log("Reiniciando...");
+        setTimeout(function() {
+          window.location.reload();
+        }, 3000);
+      });
+    </script>
+
+
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/conectar-educativo.css">
 
