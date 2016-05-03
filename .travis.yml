@@ -21,17 +21,18 @@ install:
 - bower install
 script:
 - npm test
-before_deploy:
-- make binarios
 env:
   global:
   - PHANTOMJS=$PWD/phantom/phantomjs
 deploy:
   provider: releases
+  before_deploy: "make binarios"
   api_key:
     secure: huGK5wrkmFa2k2gySV71RUriYlh3NrVuxtSp6sBBOadJu7exfy/+vILyEH3JWcJHhphcmAlMvkNEt2PqUHSTXuYVAJnGtitCyXJpvbYrSQaAHjkN4wNxEYe8nIjIYUbZ/NlxhOh7bZiF/HfLV5wEj8o2SWNHbSM9upGgRnQjn1Y=
   file: 
     - "binarios/conectar-educativo-osx32.zip"
     - "binarios/conectar-educativo-win32.zip"
+  skip_cleanup: true
   on:
     tags: true
+    all_branches: true
