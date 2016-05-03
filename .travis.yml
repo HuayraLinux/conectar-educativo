@@ -4,22 +4,35 @@ node_js:
 sudo: false
 cache:
   directories:
-  - node_modules
+    - "node_modules"
+    - "phantom"
 before_install:
-- export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
 - npm config set spin false
 - npm install -g npm@^2
+- mkdir -p $PWD/phantom
+- curl --output $PWD/phantom/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
+- chmod a+x $PWD/phantom/phantomjs
+- phantomjs --version
+- export PATH=$PWD/phantom:$PATH
+- phantomjs --version
 install:
 - npm install -g bower
 - npm install
 - bower install
 script:
 - npm test
+before_deploy:
 - make binarios
+env:
+  global:
+  - PHANTOMJS=$PWD/phantom/phantomjs
 deploy:
   provider: releases
   api_key:
     secure: huGK5wrkmFa2k2gySV71RUriYlh3NrVuxtSp6sBBOadJu7exfy/+vILyEH3JWcJHhphcmAlMvkNEt2PqUHSTXuYVAJnGtitCyXJpvbYrSQaAHjkN4wNxEYe8nIjIYUbZ/NlxhOh7bZiF/HfLV5wEj8o2SWNHbSM9upGgRnQjn1Y=
-  file: binarios/conectar-educativo/win32/conectar-educativo.exe
+  file: 
+    - "binarios/conectar-educativo-osx32.zip"
+    - "binarios/conectar-educativo-win32.zip"
   on:
     repo: HuayraLinux/conectar-educativo
+    tags: true

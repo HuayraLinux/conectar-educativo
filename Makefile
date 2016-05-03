@@ -85,3 +85,5 @@ log:
 binarios: compilar
 	./node_modules/nw-builder/bin/nwbuild --version=0.12.0 --buildDir=binarios --platforms="win32" dist
 	./node_modules/nw-builder/bin/nwbuild --version=0.12.0 --buildDir=binarios --platforms="osx32" dist
+	zip -qr binarios/conectar-educativo-win32.zip binarios/conectar-educativo/win32/
+	zip -qr binarios/conectar-educativo-osx32.zip binarios/conectar-educativo/osx32/
