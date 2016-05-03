@@ -1,23 +1,25 @@
----
 language: node_js
 node_js:
-  - "0.12"
-
+- '0.12'
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
-  - "npm config set spin false"
-  - "npm install -g npm@^2"
-
+- export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
+- npm config set spin false
+- npm install -g npm@^2
 install:
-  - npm install -g bower
-  - npm install
-  - bower install
-
+- npm install -g bower
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+- make binarios
+deploy:
+  provider: releases
+  api_key:
+    secure: huGK5wrkmFa2k2gySV71RUriYlh3NrVuxtSp6sBBOadJu7exfy/+vILyEH3JWcJHhphcmAlMvkNEt2PqUHSTXuYVAJnGtitCyXJpvbYrSQaAHjkN4wNxEYe8nIjIYUbZ/NlxhOh7bZiF/HfLV5wEj8o2SWNHbSM9upGgRnQjn1Y=
+  file: binarios/conectar-educativo/win32/conectar-educativo.exe
+  on:
+    repo: HuayraLinux/conectar-educativo
