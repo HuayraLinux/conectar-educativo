@@ -34,5 +34,4 @@ deploy:
     - "binarios/conectar-educativo-osx32.zip"
     - "binarios/conectar-educativo-win32.zip"
   on:
-    repo: HuayraLinux/conectar-educativo
     tags: true
