@@ -24,6 +24,7 @@ comandos:
 	@echo "    ${G}version${N}         Genera una nueva versión."
 	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
 	@echo "    ${G}log${N}             Muestra los cambios desde el ultimo tag."
+	@echo "    ${G}binarios${N}        Genera los binarios para windows y mac."
 	@echo ""
 
 
@@ -78,3 +79,9 @@ log:
 	git log ${VERSION}...HEAD --graph --oneline --decorate
 
 .PHONY: dist
+
+
+
+binarios: compilar
+	./node_modules/nw-builder/bin/nwbuild --version=0.12.0 --buildDir=binarios --platforms="win32" dist
+	./node_modules/nw-builder/bin/nwbuild --version=0.12.0 --buildDir=binarios --platforms="osx32" dist
