@@ -44,6 +44,7 @@
     "nw-builder": "^2.2.0"
   },
   "dependencies": {
+    "gaze": "^1.0.0",
     "request": "^2.72.0"
   }
 }
