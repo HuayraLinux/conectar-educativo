@@ -8,7 +8,7 @@
     "height": 500,
     "min_width": 800,
     "min_height": 500,
-    "toolbar": true,
+    "toolbar": false,
     "position": "center"
   }
 }
