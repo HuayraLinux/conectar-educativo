@@ -5,7 +5,9 @@ export default Ember.Controller.extend({
 
   actions: {
     buscar() {
-      this.transitionToRoute("buscar.resultado", this.get("busqueda"));
+      if (this.get("busqueda")) {
+        this.transitionToRoute("buscar.resultado", this.get("busqueda"));
+      }
     }
   }
 });

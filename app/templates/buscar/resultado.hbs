@@ -3,11 +3,49 @@
   <div class='resultado-busqueda' ng-show='data.result' infinite-scroll="busquedaPagingFunction()">
 
     <div class="input-group busqueda-input-resultados">
-      <input type="text" onkeydown="return procesar_tecla(event, 'buscar_en_detalle')" ng-model='data.query.texto' class="form-control">
+      {{input value=busqueda action="buscar" type="text" class="form-control"}}
+
       <span class="input-group-btn">
-        <button ng-click='buscar()' ng-disabled='no_ingreso_busqueda()' id='buscar_en_detalle' class="btn btn-success" type="button">Buscar</button>
+
+        {{#if busqueda}}
+
+          {{#if buscando}}
+            <button class="btn disabled btn-success">{{fa-icon "refresh" spin=true}} &nbsp;Buscando ...</button>
+          {{else}}
+            <button {{action "buscar"}} class="btn btn-success">Buscar</button>
+          {{/if}}
+
+        {{else}}
+          <button class="btn disabled">Buscar</button>
+        {{/if}}
+
       </span>
     </div>
+
+
+    {{#if buscando}}
+      <p>{{fa-icon "refresh" size="lg" spin=true}} &nbsp; Buscando ...</p>
+    {{else}}
+
+      {{#each resultado as |resultado|}}
+
+        {{resultado.id}}
+        {{resultado.titulo}}
+        {{resultado.fecha_alta}}
+        {{resultado.duracion}}
+        {{resultado.description}}
+        {{resultado.video_sd}}
+        {{resultado.video_hd}}
+        <img src={{resultado.poster}}/>
+
+      {{else}}
+        <p>No hay resultados para mostrar ...</p>
+      {{/each}}
+
+    {{/if}}
+
+
+    <!--
 
     <ul class="nav nav-tabs busqueda-filtro-entidad">
       <li ng-class="{active: data.mostrar == 'todos'}">
@@ -41,6 +79,8 @@
       <span class="label label-warning">{{recurso.entity}}</span>
       <hr/>
     </div>
+
+    -->
 
   </div>
 
