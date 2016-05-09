@@ -28,16 +28,7 @@
     {{else}}
 
       {{#each resultado as |resultado|}}
-
-        {{resultado.id}}
-        {{resultado.titulo}}
-        {{resultado.fecha_alta}}
-        {{resultado.duracion}}
-        {{resultado.description}}
-        {{resultado.video_sd}}
-        {{resultado.video_hd}}
-        <img src={{resultado.poster}}/>
-
+        {{huayra-itemResultado item=resultado}}
       {{else}}
         <p>No hay resultados para mostrar ...</p>
       {{/each}}
