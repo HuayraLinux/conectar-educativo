@@ -11,7 +11,7 @@ Router.map(function() {
   this.route('misrecursos');
   this.route('buscar', function() {
     this.route('index');
-    this.route('resultado');
+    this.route('resultado', {path: "/buscar/resultado/:busqueda"});
   });
 });
 

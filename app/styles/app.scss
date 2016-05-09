@@ -3,5 +3,24 @@
 @import "video-js";
 
 .itemMenu {
+  cursor: pointer !important;
+}
+
+.navbar-default {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.container {
+  padding-top: 70px;
+}
+
+.navbar-header {
+  margin-left: 30px;
+}
+
+[data-ember-action] {
   cursor: pointer;
 }

@@ -7,19 +7,23 @@
       <img src="img/logo-conectar-sm.png">
 
       <div class="input-group input-group-lg busqueda-input-gral">
-        <input type="text" class="form-control" placeholder='¿Que te gustaría buscar?'>
+        {{input autofocus=true enter='buscar' type="text" value=busqueda class="form-control" placeholder='¿Que te gustaría buscar?'}}
+
         <span class="input-group-btn">
-          <button id='buscar' class="btn btn-success" type="button">
-            <span>Buscar</span>
-          </button>
+          {{#if busqueda}}
+            <button {{action "buscar"}} class="btn btn-success"> <span>Buscar</span> </button>
+          {{else}}
+            <button class="btn disabled"> <span>Buscar</span> </button>
+          {{/if}}
+
         </span>
       </div>
 
       <div class='nota-buscador'>
-        <a href ng-click='visitar("http://datosabiertos.educ.ar")'><img class='logo-inline' src='img/logo-educar-sm.png'></a>
+        <a {{action "visitar" "http://educ.ar"}}><img class='logo-inline' src='img/logo-educar-sm.png'></a>
 
-        <p>Potenciado por <a href ng-click='visitar("http://educ.ar")'>educ.ar</a> y
-        su <a href ng-click='visitar("http://datosabiertos.educ.ar")'>API pública de datos</a>.</p>
+        <p>Potenciado por <a href {{action "visitar" "http://educ.ar"}}>educ.ar</a> y
+        su <a href {{action "visitar" "http://datosabiertos.educ.ar"}}>API pública de datos</a>.</p>
 
       </div>
 
