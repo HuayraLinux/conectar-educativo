@@ -11,14 +11,6 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{huayra-item-resultado}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.ok(this.$());
 
-  // Template block usage:"
-  this.render(hbs`
-    {{#huayra-item-resultado}}
-      template block text
-    {{/huayra-item-resultado}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
