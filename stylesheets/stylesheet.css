@@ -529,3 +529,7 @@ body {
 .w100 {
   width: 100%;
 }
+
+div#date {
+  opacity: 0.7;
+}
