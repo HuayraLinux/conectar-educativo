@@ -1,8 +1,29 @@
-<img src={{item.poster}}/>
+<div class="row">
+
+  <div class="col-sm-3">
+
+    {{#if item.poster}}
+      <img src={{item.poster}} class="w100"/>
+    {{else}}
+      <img src="no_image.png" class="w100"/>
+    {{/if}}
+  </div>
+
+  <div class="col-sm-9">
+    <h1 class='huayra-item-resultado-titulo'>{{plain item.titulo}}</h1>
+
+    <p>Duración: {{item.duracion}} minutos</p>
+    <p>Descripción: {{plain item.descripcion}}</p>
+
+    <p>
+      <button class="btn btn-default">Reproducir SD</button>
+      <button class="btn btn-default">Reproducir HD</button>
+    </p>
+
+  </div>
+
 {{!item.id}}
-<h1>{{item.titulo}}</h1>
-{{item.fecha_alta}}
-{{item.duracion}}
-{{item.description}}
-{{item.video_sd}}
-{{item.video_hd}}
+{{!item.video_sd}}
+{{!item.video_hd}}
+
+</div>
