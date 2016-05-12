@@ -2,6 +2,11 @@
 @import "main";
 @import "video-js";
 
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+
+@import "modal";
+
 .itemMenu {
   cursor: pointer !important;
 }

@@ -10,7 +10,9 @@ Router.map(function() {
   this.route('misrecursos');
   this.route('buscar', function() {
     this.route('index');
-    this.route('resultado', {path: "/buscar/resultado/:busqueda"});
+    this.route('resultado', {path: "/buscar/resultado/:busqueda"}, function() {
+      this.route('visualizar', {path: "/buscar/resultado/visualizar/:id"});
+    });
   });
 });
 

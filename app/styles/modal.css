@@ -1,0 +1,16 @@
+$padding: 50px;
+
+.ember-modal-overlay {
+  z-index: 1001;
+}
+
+.ember-modal-dialog {
+  left: $padding !important;
+  right: $padding !important;
+  top: $padding !important;
+  bottom: $padding !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border-radius: 0;
+}

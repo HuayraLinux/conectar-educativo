@@ -16,6 +16,8 @@
     <p>Descripción: {{plain item.descripcion}}</p>
 
     <p>
+      {{#link-to "buscar.resultado.visualizar" item}}Reproducir{{/link-to}}
+      
       <button class="btn btn-default">Reproducir SD</button>
       <button class="btn btn-default">Reproducir HD</button>
     </p>

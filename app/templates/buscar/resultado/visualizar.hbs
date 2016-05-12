@@ -1,0 +1,17 @@
+{{outlet}}
+{{#modal-dialog close="toggleModal"
+                targetAttachment="center"
+                translucentOverlay=true}}
+  {{log model}}
+  {{model}}
+
+  <p>{{model.titulo}}</p>
+
+  <p>
+    <video width="320" height="240" controls>
+      <source src={{model.video_sd}} type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </p>
+
+{{/modal-dialog}}
