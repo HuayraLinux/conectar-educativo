@@ -274,7 +274,6 @@ p, h1, h2, h3, h4, td, a {
 
 
 .main img.logo-img {
-	width: 100%;
 	transition-property: height, width;
   transition-duration: 0.2s;
 }
@@ -458,4 +457,8 @@ img.logo-inline {
 
 h4 {
 	margin-left: 10px;
+}
+
+.margin {
+	margin: 1em;
 }

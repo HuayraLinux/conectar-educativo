@@ -8,16 +8,15 @@
 
 {{#if error}}
 
-  <div class="panel-error">
-    No se puede mostrar el recurso desde este visor, abrilo
-    desde VLC.
+  <div class="alert alert-danger margin">
+    Lo sentimos, pero el video parece estar en un formato desconocido. Pulsá
+    el botón "Ver con VLC" para reproducirlo de todas formas.
   </div>
+
+  <button class='btn btn-warning' {{action "openInVLC" videoURL}}>Ver con VLC</button>
 
 {{else}}
 
   <video class={{videoClass}} src={{videoURL}} type="video/mp4" controls> </video>
-
-{{videoURL}}
-{{type}}
 
 {{/if}}

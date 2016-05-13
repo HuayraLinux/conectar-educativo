@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  vlc: Ember.inject.service(),
   classNames: ['video-container'],
   tagName: 'div',
   showVideoProperty: false,
@@ -46,6 +47,13 @@ export default Ember.Component.extend({
     this.set("error", true);
     this.set('loading', false);
     console.log("Dió error.");
+  },
+
+
+  actions: {
+    openInVLC(url) {
+      this.get("vlc").play(url);
+    }
   }
 
 });

@@ -4,7 +4,8 @@
     "window",
     "-Promise",
     "requireNode",
-    "$"
+    "$",
+    "process"
   ],
   "browser": true,
   "boss": true,
