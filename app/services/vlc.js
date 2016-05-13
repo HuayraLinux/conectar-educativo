@@ -19,7 +19,7 @@ export default Ember.Service.extend({
     }
 
 
-    let child = exec(comando,
+    exec(comando,
       function (error, stdout, stderr) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
