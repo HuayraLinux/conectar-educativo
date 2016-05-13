@@ -16,10 +16,18 @@
     <p>Descripción: {{plain item.descripcion}}</p>
 
     <p>
-      {{#link-to "buscar.resultado.visualizar" item}}Reproducir{{/link-to}}
-      
-      <button class="btn btn-default">Reproducir SD</button>
-      <button class="btn btn-default">Reproducir HD</button>
+      {{#if item.video_sd}}
+        {{#link-to "buscar.resultado.visualizar" item (query-params type="sd") class="btn btn-default"}}Reproducir SD{{/link-to}}
+      {{/if}}
+
+      {{#if item.video_hd}}
+        {{#link-to "buscar.resultado.visualizar" item (query-params type="hd") class="btn btn-default"}}Reproducir HD{{/link-to}}
+      {{/if}}
+
+      {{#if noVideo}}
+        <button class="btn btn-default" disabled>Sin videos</button>
+      {{/if}}
+
     </p>
 
   </div>

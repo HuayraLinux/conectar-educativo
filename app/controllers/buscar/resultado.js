@@ -19,12 +19,10 @@ export default Ember.Controller.extend({
     buscar() {
       if (this.get("busqueda")) {
         this.set("buscando", true);
-        console.log("iniciando la búsqueda de: " + this.get("busqueda"));
 
         this.get('api').buscar(this.get("busqueda")).then((data) => {
           this.set("buscando", false);
           this.set("resultado", data);
-          console.log(data);
         });
 
       }

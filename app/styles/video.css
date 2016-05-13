@@ -1,0 +1,25 @@
+.video-container {
+  text-align: center;
+}
+
+.video-container video {
+}
+
+.overlay-spinner {
+  background-color: white;
+  padding-top: 2em;
+}
+
+.panel-error {
+  padding: 1em;
+  margin: 3em;
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.videoHidden {
+  display: none;
+}
