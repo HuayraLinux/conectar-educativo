@@ -15,7 +15,7 @@ export default Ember.Service.extend({
     }
 
     if (process.platform === 'darwin') {
-      comando = 'open -a VLC --args "' + ruta + '"';
+      comando = 'open -a VLC "' + ruta + '"';
     }
 
 
