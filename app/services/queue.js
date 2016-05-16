@@ -32,6 +32,10 @@ export default Ember.Service.extend({
   },
 
   tick() {
+    if (this.get('isDestroyed') || this.get('isDestroying')) {
+      return;
+    }
+    
     console.log("iniciar queue tick");
 
     if (this.get("itemActual") === null) {
@@ -64,15 +68,15 @@ export default Ember.Service.extend({
     let item = this.get('itemActual');
     this.set('itemActual.estado', ESTADO_INICIANDO);
 
-
-
-    for (let a=0; a<10; a++) {
-
+    function testAumentarProgreso(a) {
       setTimeout(() => {
         Ember.set(item, 'progreso', a * 10);
         Ember.set(item, 'estado', ESTADO_EN_CURSO);
       }, a * 1000);
+    }
 
+    for (let a=0; a<10; a++) {
+      testAumentarProgreso(a);
     }
 
     setTimeout(() => {
