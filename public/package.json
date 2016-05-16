@@ -1,7 +1,7 @@
 {
   "main": "index.html",
   "name": "conectar-educativo",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "window": {
     "title": "conectar-educativo",
     "width": 800,
