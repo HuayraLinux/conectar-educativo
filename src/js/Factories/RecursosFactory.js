@@ -4,11 +4,11 @@ var path = require('path');
 var fs = require('fs');
 
 if (process.platform === 'win32') {
-    if (fs.existsSync("F:\\conectar-educativo")) {
-        var homedir = "F:\\conectar-educativo";
+    if (fs.existsSync("E:\\conectar-educativo")) {
+        var homedir = "E:\\conectar-educativo";
     }
     else {
-        var homedir = process.USERPROFILE;
+        var homedir = process.env.USERPROFILE;
     }
 }
 else {
