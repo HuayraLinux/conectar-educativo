@@ -32,6 +32,7 @@ comandos:
 iniciar:
 	npm install --no-option
 	./node_modules/bower/bin/bower install
+	cd public; npm install
 
 dist: compilar
 

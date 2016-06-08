@@ -22,6 +22,8 @@
     "currentURL",
     "currentPath",
     "currentRouteName",
+    "requireNode",
+    "$",
     "process"
   ],
   "node": false,

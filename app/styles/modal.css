@@ -10,7 +10,11 @@ $padding: 50px;
   top: $padding !important;
   bottom: $padding !important;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 5px !important;
 
   border-radius: 0;
+}
+
+.ember-modal-dialog video {
+  width: 100%;
 }

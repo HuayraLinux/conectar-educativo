@@ -10,5 +10,8 @@
     "min_height": 600,
     "toolbar": false,
     "position": "center"
+  },
+  "dependencies": {
+    "fs-extra": "^0.30.0"
   }
 }

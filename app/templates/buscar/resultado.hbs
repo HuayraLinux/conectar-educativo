@@ -27,11 +27,13 @@
       <p>{{fa-icon "refresh" size="lg" spin=true}} &nbsp; Buscando ...</p>
     {{else}}
 
-      {{#each resultado as |resultado|}}
-        {{huayra-itemResultado item=resultado}}
-      {{else}}
-        <p>No hay resultados para mostrar ...</p>
-      {{/each}}
+      <div class="padding-top">
+        {{#each resultado as |resultado|}}
+          {{huayra-itemResultado item=resultado}}
+        {{else}}
+          <p>No hay resultados para mostrar ...</p>
+        {{/each}}
+      </div>
 
     {{/if}}
 

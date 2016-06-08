@@ -16,16 +16,30 @@
     <p>Descripción: {{plain item.descripcion}}</p>
 
     <p>
-      {{#if item.video_sd}}
-        {{#link-to "buscar.resultado.visualizar" item (query-params type="sd") class="btn btn-default"}}Reproducir SD{{/link-to}}
-      {{/if}}
-
-      {{#if item.video_hd}}
-        {{#link-to "buscar.resultado.visualizar" item (query-params type="hd") class="btn btn-default"}}Reproducir HD{{/link-to}}
-      {{/if}}
 
       {{#if noVideo}}
         <button class="btn btn-default" disabled>Sin videos</button>
+      {{else}}
+
+        {{#if item.video_sd}}
+          {{#link-to "buscar.resultado.visualizar" item (query-params type="sd") class="btn btn-default"}}Reproducir SD{{/link-to}}
+        {{/if}}
+
+        {{#if item.video_hd}}
+          {{#link-to "buscar.resultado.visualizar" item (query-params type="hd") class="btn btn-default"}}Reproducir HD{{/link-to}}
+        {{/if}}
+
+        {{#if downloadingState}}
+          <button disabled class="btn btn-default">Descargando ...</button>
+        {{else}}
+          {{#if downloadedState}}
+            <button disabled class="btn btn-default">Descargado</button>
+          {{else}}
+            <button {{action "descargar" item}} class="btn btn-default">Descargar</button>
+          {{/if}}
+        {{/if}}
+
+
       {{/if}}
 
     </p>

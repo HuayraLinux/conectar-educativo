@@ -11,5 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{ce-video}}`);
 
-  assert.equal(this.$().text().trim(), 'Cargando video ...');
+  assert.equal(this.$().text().trim(), 'Solicitando video ...');
 });
