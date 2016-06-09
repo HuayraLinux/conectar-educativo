@@ -10,10 +10,8 @@ export default Ember.Component.extend({
 
   actions: {
     descargar(item) {
-      //this.get('queue').descargar({id: 123, item: item, titulo: "Un título", estado: ESTADO_PENDIENTE});
-      window.item = item;
+      this.get('queue').descargar(item);
     }
-
   }
 
 });

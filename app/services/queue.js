@@ -2,17 +2,31 @@ import Ember from 'ember';
 
 const ESTADO_PENDIENTE = "pendiente";
 const ESTADO_INICIANDO = "iniciando";
-//const ESTADO_EN_CURSO = "en_curso";
+const ESTADO_EN_CURSO = "en_curso";
 const ESTADO_TERMINADO = "terminado";
+const ESTADO_ERROR = "error";
+
+const MOSTRAR_MENSAJES_DE_LOG = false;
+
+
+function log(mensaje) {
+  if (MOSTRAR_MENSAJES_DE_LOG) {
+    console.log("QUEUE: " + mensaje);
+  }
+}
 
 export default Ember.Service.extend({
   items: [],
   itemsDescargados: [],
   itemActual: null,
-  completedDownloadCounter: 0,
+  //completedDownloadCounter: 0,
   network: Ember.inject.service(),
 
-  count: Ember.computed('items', function() {
+  count: Ember.computed('items.@each', function() {
+    return this.get('items').length;
+  }),
+
+  completedDownloadCounter: Ember.computed("count", function() {
     return this.get('items').length;
   }),
 
@@ -25,6 +39,7 @@ export default Ember.Service.extend({
   }),
 
   descargar(recurso) {
+    recurso.estado = ESTADO_PENDIENTE;
     recurso.progreso = recurso.progreso || 0;
     this.items.pushObject(recurso);
   },
@@ -34,13 +49,15 @@ export default Ember.Service.extend({
       return;
     }
 
-    console.log("iniciar queue tick");
+    log("iniciar queue tick");
 
     if (this.get("itemActual") === null) {
       this._seleccionar_primer_item();
     } else {
-      if (this.get("itemActual.estado") === ESTADO_TERMINADO) {
+      if (this.get("itemActual.estado") === ESTADO_TERMINADO || this.get("itemActual.estado") === ESTADO_ERROR) {
         this.set("itemActual", null);
+      } else {
+        log("Ya hay una descarga en curso...");
       }
     }
 
@@ -52,12 +69,12 @@ export default Ember.Service.extend({
   _seleccionar_primer_item() {
     for (let i=0; i < this.get("items").length; i++) {
       if (this.get('items')[i].estado === ESTADO_PENDIENTE) {
-        console.log("Seleccionado un item");
+        log("Seleccionado un item");
         this.set('itemActual', this.get('items')[i]);
         this._iniciar_descarga_item_actual();
         return null;
       } else {
-        console.log("No hay items para seleccionar.");
+        log("No hay items para seleccionar.");
       }
     }
   },
@@ -65,7 +82,19 @@ export default Ember.Service.extend({
   _iniciar_descarga_item_actual() {
     let item = this.get('itemActual');
     this.set('itemActual.estado', ESTADO_INICIANDO);
-    this.get("network").download(item.item.video_hd);
+
+    this.get("network").download(item.video_hd, (p) => {
+      this.set('itemActual.estado', ESTADO_EN_CURSO);
+      this.set('itemActual.progreso', p);
+      log("PROGRESS DESDE QUEUE: " + p);
+    }, (result) => {
+      log("DONE DESDE QUEUE: "+ result);
+      this.set('itemActual.estado', ESTADO_TERMINADO);
+    }, (error) => {
+      this.set('itemActual.estado', ESTADO_ERROR);
+      this.set('itemActual.error', error);
+    });
+
   },
 
 });

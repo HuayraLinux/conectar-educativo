@@ -2,12 +2,82 @@ import Ember from 'ember';
 
 //var fs = requireNode('fs');
 //var fsextra = requireNode('fs-extra');
-//var http = requireNode('http');
+var http = requireNode('http');
 //var path = requireNode('path');
 
-export default Ember.Service.extend({
-  download(url, progress, done) {
+var fs = requireNode('fs');
+//var request = requireNode('request');
+//var progress = requireNode('request-progress');
 
+export default Ember.Service.extend({
+  download(url, progress_callback, done_callback, error_callback) {
+    var objeto = {
+      transmitido_en_bytes: 0,
+      total_en_bytes: 0,
+      progreso: 0
+    };
+
+    http.get(url, function(res) {
+      objeto.total_en_bytes = parseInt(res.headers['content-length'], 10);
+
+      res.on('data', function(chunk) {
+
+        //file.write(chunk);
+        objeto.transmitido_en_bytes += chunk.length;
+        objeto.progreso = Math.floor((objeto.transmitido_en_bytes / objeto.total_en_bytes) * 100)
+
+        progress_callback(objeto.progreso);
+
+        //if (objeto.estado === 'cancelado') {
+        //  res.destroy();
+        //  DataBus.emit('termina-descarga', {});
+        //}
+      });
+
+      res.on('end', function() {
+
+        // Si la descarga es exitosa ...
+        if (objeto.transmitido_en_bytes == objeto.total_en_bytes) {
+          objeto.transmitido_en_bytes = objeto.total_en_bytes;
+          objeto.progreso = Math.floor((objeto.transmitido_en_bytes / objeto.total_en_bytes) * 100)
+
+          done_callback("ok");
+
+          /*
+          if (fs.existsSync(directorio_recurso_temporal)) {
+            objeto.estado = 'terminado';
+            //fs.renameSync(directorio_recurso_temporal, directorio_recurso);
+            fsextra.copySync(directorio_recurso_temporal, directorio_recurso, undefined, true);
+            rmdir(directorio_recurso_temporal);
+
+            crear_miniatura(directorio_recurso, function() {
+              RecursosFactory.agregar_recurso(objeto.detalle);
+              DataBus.emit('termina-descarga', objeto.detalle);
+            });
+
+          } else {
+            objeto.estado = 'error';
+            DataBus.emit('termina-descarga', objeto.detalle);
+          }
+          */
+
+        }
+
+      });
+
+      res.on('close', function () {
+        //objeto.estado = 'error';
+        //rmdir(directorio_recurso_temporal);
+        //DataBus.emit('termina-descarga', objeto.detalle);
+      });
+
+    }).
+    on('error', function(error) {
+      error_callback(error.message);
+      //objeto.estado = 'error';
+      //rmdir(directorio_recurso_temporal);
+      //DataBus.emit('termina-descarga', {});
+    });
 
 /*
 
@@ -121,6 +191,7 @@ export default Ember.Service.extend({
 */
 
 
+    /*
     progress(url);
     progress(url);
     progress(url);
@@ -129,6 +200,7 @@ export default Ember.Service.extend({
     progress(url);
 
     setTimeout(done, 5000);
+    */
 
   }
 });
