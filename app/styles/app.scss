@@ -57,6 +57,23 @@ h1.huayra-item-resultado-titulo {
   padding-top: 2em;
 }
 
-.navbar-default {
-  position: absolute !important;
+.back-button-container {
+  display: inline-block;
+}
+
+a.icon-disabled {
+  color: #ddd !important;
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+.w120 {
+  width: 120px;
+}
+
+.progress {
+  margin-bottom: 0px !important;
 }

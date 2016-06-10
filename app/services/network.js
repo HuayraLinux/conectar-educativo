@@ -18,7 +18,10 @@ export default Ember.Service.extend({
     };
 
     http.get(url, function(res) {
+      let counter = 0;
       objeto.total_en_bytes = parseInt(res.headers['content-length'], 10);
+      let progreso_anterior = 0;
+
 
       res.on('data', function(chunk) {
 
@@ -26,7 +29,19 @@ export default Ember.Service.extend({
         objeto.transmitido_en_bytes += chunk.length;
         objeto.progreso = Math.floor((objeto.transmitido_en_bytes / objeto.total_en_bytes) * 100);
 
-        progress_callback(objeto.progreso);
+        counter += 1;
+
+        if (counter > 100) { // Establece una demora, para no hacer checkeo constante.
+
+          if (progreso_anterior !== objeto.progreso) { // si el progreso es el mismo ni lo reporta.
+            progreso_anterior = objeto.progreso;
+            progress_callback(objeto.progreso);
+          }
+
+          counter = 0;
+        }
+
+
 
         //if (objeto.estado === 'cancelado') {
         //  res.destroy();

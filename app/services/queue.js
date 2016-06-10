@@ -26,10 +26,6 @@ export default Ember.Service.extend({
     return this.get('items').length;
   }),
 
-  completedDownloadCounter: Ember.computed("count", function() {
-    return this.get('items').length;
-  }),
-
   noHayDescargas: Ember.computed("count", function() {
     return (this.get("count") === 0);
   }),

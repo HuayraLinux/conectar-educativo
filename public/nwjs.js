@@ -1,4 +1,4 @@
-var LIVE_RELOAD_ACTIVO = true;
+var LIVE_RELOAD_ACTIVO = false;
 
 var requireNode = require;
 window.requireNode = requireNode;

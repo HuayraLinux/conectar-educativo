@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  navigator: Ember.inject.service(),
 
   disableBackspace: Ember.on("init", function() {
 
@@ -27,5 +28,9 @@ export default Ember.Controller.extend({
     });
 
   }),
+
+  watchHistory: function() {
+    this.get('navigator').notifyTransition(this.get('currentPath'));
+  }.observes('currentPath'),
 
 });

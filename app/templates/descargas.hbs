@@ -4,7 +4,6 @@
     <h1>Descargas</h1>
 
     <p>Desde esta sección vas a poder observar las descargas en curso:</p>
-    <p>Hay {{queue.count}} items </p>
   </div>
 
   <div class="row">
@@ -12,8 +11,8 @@
         <thead>
           <tr>
             <th>Titulo</th>
-            <th>Descripcion</th>
-            <th>Estado</th>
+            <!-- <th>Descripcion</th> -->
+            <th class="w120">Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -29,9 +28,9 @@
             {{#each queue.items as |item|}}
 
               <tr>
-                <td>{{item.titulo}}</td>
-                <td>{{item.descripcion}}</td>
-                <td>{{item.estado}} ({{item.progreso}} %)</td>
+                <td>{{plain item.titulo}}</td>
+                <!-- <td>{{plain item.descripcion}}</td> -->
+                <td class="text-center">{{g-estado-descarga-de-item item=item}}</td>
                 <td>
 
           <!--

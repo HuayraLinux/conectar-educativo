@@ -1,0 +1,5 @@
+{{#if navigator.hasHistory}}
+  <a href="" class="icon" {{action "back"}}>{{fa-icon 'fa-chevron-left'}}</a>
+{{else}}
+  <a class="icon-disabled">{{fa-icon 'fa-chevron-left'}}</a>
+{{/if}}

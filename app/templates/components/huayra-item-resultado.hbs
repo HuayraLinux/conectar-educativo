@@ -29,25 +29,20 @@
           {{#link-to "buscar.resultado.visualizar" item (query-params type="hd") class="btn btn-default"}}Reproducir HD{{/link-to}}
         {{/if}}
 
-        {{#if downloadingState}}
-          <button disabled class="btn btn-default">Descargando ...</button>
-        {{else}}
           {{#if downloadedState}}
-            <button disabled class="btn btn-default">Descargado</button>
+            <button disabled class="btn btn-default">Ya descargado</button>
           {{else}}
-            <button {{action "descargar" item}} class="btn btn-default">Descargar</button>
+            {{#if downloadingState}}
+              <button disabled class="btn btn-default">Descargando ...</button>
+            {{else}}
+              <button {{action "descargar" item}} class="btn btn-default">Descargar</button>
+            {{/if}}
           {{/if}}
-        {{/if}}
-
 
       {{/if}}
 
     </p>
 
   </div>
-
-{{!item.id}}
-{{!item.video_sd}}
-{{!item.video_hd}}
 
 </div>
