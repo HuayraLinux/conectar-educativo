@@ -12,6 +12,8 @@
     "position": "center"
   },
   "dependencies": {
-    "fs-extra": "^0.30.0"
+    "fs-extra": "^0.30.0",
+    "request": "^2.72.0",
+    "request-progress": "^2.0.1"
   }
 }

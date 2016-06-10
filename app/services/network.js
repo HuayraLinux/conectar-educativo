@@ -5,7 +5,7 @@ import Ember from 'ember';
 var http = requireNode('http');
 //var path = requireNode('path');
 
-var fs = requireNode('fs');
+//var fs = requireNode('fs');
 //var request = requireNode('request');
 //var progress = requireNode('request-progress');
 
@@ -24,7 +24,7 @@ export default Ember.Service.extend({
 
         //file.write(chunk);
         objeto.transmitido_en_bytes += chunk.length;
-        objeto.progreso = Math.floor((objeto.transmitido_en_bytes / objeto.total_en_bytes) * 100)
+        objeto.progreso = Math.floor((objeto.transmitido_en_bytes / objeto.total_en_bytes) * 100);
 
         progress_callback(objeto.progreso);
 
@@ -37,9 +37,9 @@ export default Ember.Service.extend({
       res.on('end', function() {
 
         // Si la descarga es exitosa ...
-        if (objeto.transmitido_en_bytes == objeto.total_en_bytes) {
+        if (parseInt(objeto.transmitido_en_bytes, 10) === parseInt(objeto.total_en_bytes, 10)) {
           objeto.transmitido_en_bytes = objeto.total_en_bytes;
-          objeto.progreso = Math.floor((objeto.transmitido_en_bytes / objeto.total_en_bytes) * 100)
+          objeto.progreso = Math.floor((objeto.transmitido_en_bytes / objeto.total_en_bytes) * 100);
 
           done_callback("ok");
 
