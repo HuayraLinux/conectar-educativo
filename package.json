@@ -46,7 +46,9 @@
     "nw-builder": "^2.2.0"
   },
   "dependencies": {
+    "ffthumb": "0.0.4",
     "gaze": "^1.0.0",
+    "nedb": "^1.8.0",
     "request": "^2.72.0"
   }
 }
