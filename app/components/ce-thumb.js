@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   didInsertElement() {
     let img = this.$().find('img')[0];
 
-    img.onerror = (error) => {
+    img.onerror = (/*error*/) => {
       img.src = "no_image.png";
       return false;
     };
