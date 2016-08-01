@@ -41,6 +41,36 @@ export default Ember.Component.extend({
     this.set('showVideoProperty', true);
     this.set('loading', false);
     console.log("Cargó correctamente.");
+    this._conectarEventoResize();
+    $(window).resize();
+  },
+
+  willDestroyElement() {
+    this._desconectarEventoResize();
+  },
+
+  _conectarEventoResize() {
+    let video = this.$('video');
+    let contenedor = $(".ember-modal-dialog");
+
+    $(window).resize(() => {
+      let ratio = 0.98;
+
+      let marginTop = ((window.innerHeight - newHeight) / 2) + "px";
+
+      let newWidth = contenedor.innerWidth() * ratio;
+      let newHeight = (contenedor.innerHeight() - 30) * ratio;
+
+      video.css("margin-top", marginTop);
+
+      video.css("width", `${newWidth}px`);
+      video.css("height", `${newHeight}px`);
+
+    });
+  },
+
+  _desconectarEventoResize() {
+    $(window).off("resize");
   },
 
   showError() {

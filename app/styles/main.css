@@ -455,8 +455,10 @@ img.logo-inline {
 }
 
 
-h4 {
-	margin-left: 10px;
+.ember-modal-dialog h4 {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 7px;
 }
 
 .margin {
