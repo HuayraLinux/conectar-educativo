@@ -13,7 +13,6 @@ export default Ember.Service.extend({
 
     let rutaBaseDeDatos = path.join(this.get("rutaHome"), "recursos.db");
     this.set("rutaBaseDeDatos", rutaBaseDeDatos);
-    //, "recursos.db");this.obtener_ruta_base_de_datos());
 
     let NeDB = nedb;
     this.set('db', new NeDB({filename: rutaBaseDeDatos, autoload: true}));

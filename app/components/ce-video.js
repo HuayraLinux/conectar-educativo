@@ -54,13 +54,12 @@ export default Ember.Component.extend({
     let contenedor = $(".ember-modal-dialog");
 
     $(window).resize(() => {
-      let ratio = 0.98;
+      const ratio = 0.98;
 
       let newWidth = contenedor.innerWidth() * ratio;
       let newHeight = (contenedor.innerHeight() - 30) * ratio;
-      let marginTop = ((window.innerHeight - newHeight) / 2) + "px";
 
-      video.css("margin-top", marginTop);
+      video.css("margin-top", 0);
 
       video.css("width", `${newWidth}px`);
       video.css("height", `${newHeight}px`);
@@ -77,7 +76,6 @@ export default Ember.Component.extend({
     this.set('loading', false);
     console.log("Dió error.");
   },
-
 
   actions: {
     openInVLC(url) {
