@@ -56,10 +56,9 @@ export default Ember.Component.extend({
     $(window).resize(() => {
       let ratio = 0.98;
 
-      let marginTop = ((window.innerHeight - newHeight) / 2) + "px";
-
       let newWidth = contenedor.innerWidth() * ratio;
       let newHeight = (contenedor.innerHeight() - 30) * ratio;
+      let marginTop = ((window.innerHeight - newHeight) / 2) + "px";
 
       video.css("margin-top", marginTop);
 
