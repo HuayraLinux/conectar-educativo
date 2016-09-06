@@ -2,7 +2,7 @@ Source: escritorio-educativo
 Section: utils
 Priority: extra
 Maintainer: Hugo Ruscitti <hugoruscitti@gmail.com>
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), git
 Standards-Version: 3.9.3
 Homepage: https://github.com/hugoruscitti/escritorio-educativo
 #Vcs-Git: git://git.debian.org/collab-maint/escritorio-educativo.git

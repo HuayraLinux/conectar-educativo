@@ -13,6 +13,9 @@ window.mostrar_herramientas_de_desarrollo = function() {
 };
 
 
+/* HACK para setear WM_CLASS */
+requireNode('nwjs-hack').set_wmclass('conectar-educativo', true);
+
 var gui = require('nw.gui');
 win = gui.Window.get();
 

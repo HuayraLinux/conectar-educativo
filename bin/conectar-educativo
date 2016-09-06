@@ -1,2 +1,2 @@
 #!/bin/bash
-nw /usr/share/conectar-educativo/src
+exec nw /usr/share/conectar-educativo/src $@

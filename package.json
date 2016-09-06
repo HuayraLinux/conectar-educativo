@@ -1,11 +1,13 @@
 {
   "dependencies": {
     "nedb": "~0.8.0",
-    "grunt": "^0.4.5",
-    "grunt-node-webkit-builder": "^0.3.0",
     "ffthumb": "0.0.4",
     "fs-extra": "^0.12.0",
+    "nwjs-hack": "iglosiggio/nwjs-hack",
     "underscore": "^1.8.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "grunt-node-webkit-builder": "^0.3.0",
+    "grunt": "^0.4.5"
+  }
 }
