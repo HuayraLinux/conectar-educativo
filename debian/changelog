@@ -1,3 +1,16 @@
+escritorio-educativo (1:0.4.0d) unstable; urgency=medium
+
+  * Fix sobre la inconsistencia de versiones
+  * Fixes a la build del paquete en strider
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Mon, 12 Sep 2016 12:35:22 -0300
+
+escritorio-educativo (1:0.4.0c) unstable; urgency=medium
+
+  * Fix funcional del bugfix anterior
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Tue, 06 Sep 2016 11:40:01 -0300
+
 escritorio-educativo (1:0.4.0b) unstable; urgency=medium
 
   * Agregado hint de WM_CLASS para gnome3
